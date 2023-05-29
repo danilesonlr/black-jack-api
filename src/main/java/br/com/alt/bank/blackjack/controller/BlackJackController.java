@@ -66,7 +66,7 @@ public class BlackJackController {
 
     @ApiOperation(value = "Deleta o Jogo.")
     @DeleteMapping("/deletarJogo")
-    public ResponseEntity deletarJogo(){
+    public ResponseEntity deletarJogo() throws BlackJackExeption{
         service.deletarJogo();
         return ResponseEntity.noContent().build();
     }

@@ -176,7 +176,10 @@ public class BaralhoServiceImpl<T> implements BaralhoService {
     }
 
     @Override
-    public void deletarJogo() {
+    public void deletarJogo() throws BlackJackExeption {
+                if (validaRodada()) {
+            montarException("Não existe mesa aberta no momento. Favor iniciar um jogo.");
+        }
         log.warn("Deletando Jogo");
         cartaRepository.deleteAll();
         jogadorRepository.deleteAll();

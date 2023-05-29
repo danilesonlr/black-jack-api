@@ -39,7 +39,7 @@ public interface BaralhoService {
     /**
      * Serviço para deletar jogo.
      */
-    void deletarJogo();
+    void deletarJogo() throws BlackJackExeption;
 
     /**
      *  Serviço para retornar todas as rodadas encerradas.
