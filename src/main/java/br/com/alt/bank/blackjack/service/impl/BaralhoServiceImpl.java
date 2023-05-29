@@ -177,7 +177,7 @@ public class BaralhoServiceImpl<T> implements BaralhoService {
 
     @Override
     public void deletarJogo() throws BlackJackExeption {
-                if (validaRodada()) {
+        if (!existeRodadas()) {
             montarException("Não existe mesa aberta no momento. Favor iniciar um jogo.");
         }
         log.warn("Deletando Jogo");
@@ -334,5 +334,13 @@ public class BaralhoServiceImpl<T> implements BaralhoService {
         return "Jogo encerrado!!! Vitória do jogador:"
                 + jogadorGanhador.getNome() + " com "
                 + jogadorGanhador.getPonto() + " pontos";
+    }
+
+    private boolean existeRodadas() {
+        List<Rodada> rodadas = rodadaRepository.findAll();
+        if(rodadas == null || rodadas.isEmpty()){
+            return false;
+        }
+        return true;
     }
 }
